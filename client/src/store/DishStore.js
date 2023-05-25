@@ -2,21 +2,57 @@ import {makeAutoObservable} from "mobx";
 
 export default class DishStore {
     constructor() {
-        this._dishes = [
-            {userId: 1, nameOfDish: "Coca-cola", description: "Not bad vkys", price: 100, calories: 32.1, typeDish: "Drink" }
-        ]
+        this._dishes = []
+        this._types = []
+        this._orders = []
+        this._selectedType = {}
+        this._page = 1
+        this._totalCount = 0
+        this._limit = 5
         makeAutoObservable(this)
     }
-    setIsAuth(bool){
-        this._isAuth = bool
+
+    setSelectedType(type){
+        this.setPage(1)
+        this._selectedType = type
     }
-    setUser(user){
-        this._user = user
+    setDeletedOrder(order){
+        this._orders = this._orders.filter(r => r.dishId !== order)
     }
-    get isAuth() {
-        return this._isAuth
+    get selectedType(){
+        return this._selectedType
     }
-    get User() {
-        return this._user
+    setDishes(dishes){
+        this._dishes = dishes
+    }
+    setOrder(orders){
+        this._orders.push(orders)
+    }
+    setTypes(types) {
+        this._types = types
+    }
+    setPage(page){
+        this._page = page
+    }
+    setTotalCount(count){
+        this._totalCount = count
+    }
+    get totalCount(){
+        return this._totalCount
+    }
+    get page(){
+        return this._page
+    }
+    get limit(){
+        return this._limit
+    }
+    get types(){
+        return this._types
+    }
+    get dishes() {
+        return this._dishes
+    }
+    get orders(){
+        return this._orders
     }
 }

@@ -4,7 +4,7 @@ import {
     CONTACT_ROUTE, DISH_ROUTE,
     HOME_ROUTE,
     LOGIN_ROUTE,
-    MENU_ROUTE,
+    MENU_ROUTE, ORDER_ROUTE,
     REGISTRATION_ROUTE
 } from "./utils/constants";
 import AdminPage from "./pages/AdminPage";
@@ -14,6 +14,7 @@ import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import Menu from "./pages/Menu";
 import DishPage from "./pages/DishPage";
+import Order from "./pages/Order";
 
 export const authRoutes = [
     {
@@ -31,7 +32,7 @@ export const publicRoutes = [
         Component: Menu
     },
     {
-        path: DISH_ROUTE + '/:id',
+        path: DISH_ROUTE + '/:dishId',
         Component: DishPage
     },
     {
@@ -49,5 +50,9 @@ export const publicRoutes = [
     {
         path: CONTACT_ROUTE,
         Component: Contact
+    },
+    {
+        path: ORDER_ROUTE,
+        Component: Order
     }
 ]

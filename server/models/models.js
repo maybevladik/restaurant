@@ -6,7 +6,7 @@ const User = sequelize.define('user', {
     /*name:{type: DataTypes.STRING},
     surname: {type: DataTypes.STRING},
     login: {type: DataTypes.STRING},*/
-    mail: {type: DataTypes.STRING, unique: true},
+    email: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING},
     role: {type: DataTypes.STRING, defaultValue: "USER"}
 })
@@ -20,7 +20,35 @@ const Dish = sequelize.define('dish', {
     img: {type: DataTypes.STRING, allowNull: false}
 })
 
+const Type = sequelize.define('type', {
+    typeId: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name:{type: DataTypes.STRING, unique: true, allowNull: false}
+})
+
+const Basket = sequelize.define('basket', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true}
+})
+
+const BasketDish = sequelize.define('basket_dish', {
+    typeId: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true}
+})
+
+Type.hasMany(Dish)
+Dish.belongsTo(Type)
+
+User.hasOne(Basket)
+Basket.belongsTo(User)
+
+Basket.hasMany(BasketDish)
+BasketDish.belongsTo(Basket)
+
+Dish.hasMany(BasketDish)
+BasketDish.belongsTo(Dish)
+
 module.exports = {
     User,
-    Dish
+    Dish,
+    Type,
+    Basket,
+    BasketDish
 }

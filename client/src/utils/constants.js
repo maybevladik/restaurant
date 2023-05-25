@@ -6,4 +6,5 @@ export const DISH_ROUTE = '/dish'
 export const HOME_ROUTE = '/'
 export const ABOUT_ROUTE = '/aboutUs'
 export const CONTACT_ROUTE = '/contact'
+export const ORDER_ROUTE = '/orders'
 

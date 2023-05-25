@@ -1,5 +1,5 @@
 const uuid = require('uuid')
-const {Dish} = require('../models/models')
+const {Dish, Type} = require('../models/models')
 const path = require('path')
 const ApiError = require('../error/ApiError')
 class DishController {
@@ -17,19 +17,43 @@ class DishController {
         }
     }
     async getAll(req, res) {
-        let {dishId, limit, page} = req.query
+        let {typeDish, limit, page} = req.query
         page = page || 1
-        limit = limit || 2
+        limit = limit || 3
         let offset = page * limit - limit
-        let dish
-        if(!dishId){
-            dish = await Dish.findAndCountAll({limit, offset})
+        let dishes
+        if(!typeDish){
+            dishes = await Dish.findAndCountAll({limit, offset})
         }
-        if(dishId){
-            dish = await Dish.findAndCountAll({where: {dishId}, limit, offset})
+        if(typeDish){
+            dishes = await Dish.findAndCountAll({where: {typeDish}, limit, offset})
         }
-        return res.json(dish)
+       // return res.json(dish)
+      //  const dishes = await Dish.findAll()
+        return res.json(dishes)
     }
+    async getOne(req, res){
+        const {dishId} = req.params
+        const dishes = await Dish.findOne({
+            where: {dishId}
+        },)
+        return res.json(dishes)
+    }
+    async delete(req, res){
+        const {nameOfDish} = req.params
+        try {
+            const dishes = await Dish.destroy({
+                where: {nameOfDish}
+            })
+            if (dishes) {
+                return res.json({message: 'Succesful'})
+            } else {
+                return res.status(404).json({error: 'QQQQQQQQQQQQQQQQQQQQW'})
+            }
+        } catch (error){
+            return res.status(500).json({error: "sorry, error"})
+        }
+        }
 }
 
 module.exports = new DishController()

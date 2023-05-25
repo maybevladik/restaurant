@@ -1,0 +1,8 @@
+H1 {
+    font-family: Georgia;
+    font-size: 50px;
+    font-weight: normal;
+    cursor: pointer;
+    text-shadow: 0 0 0 crimson;
+    color: black;
+}

@@ -1,0 +1,18 @@
+.photo-gallery {
+    /* Стилі для контейнера фотогалереї */
+}
+
+.photo-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Два стовпці з однаковою шириною */
+    grid-gap: 15px; /* Відступи між фотографіями */
+}
+
+.photo-item {
+    /* Додаткові стилі для кожного елемента фото, наприклад, відступи і вирівнювання */
+}
+
+.photo-item img {
+    width: 100%;
+    height: auto;
+}
