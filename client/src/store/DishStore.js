@@ -19,6 +19,11 @@ export default class DishStore {
     setDeletedOrder(order){
         this._orders = this._orders.filter(r => r.dishId !== order)
     }
+    setDeleteAllOrder(){
+        while (this._orders.length !== 0){
+            this._orders.pop()
+        }
+    }
     get selectedType(){
         return this._selectedType
     }

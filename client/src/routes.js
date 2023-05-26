@@ -5,7 +5,7 @@ import {
     HOME_ROUTE,
     LOGIN_ROUTE,
     MENU_ROUTE, ORDER_ROUTE,
-    REGISTRATION_ROUTE
+    REGISTRATION_ROUTE, RESERVE_ROUTE
 } from "./utils/constants";
 import AdminPage from "./pages/AdminPage";
 import Auth from "./pages/Auth";
@@ -15,6 +15,7 @@ import Contact from "./pages/Contact";
 import Menu from "./pages/Menu";
 import DishPage from "./pages/DishPage";
 import Order from "./pages/Order";
+import ReserveTable from "./pages/ReserveTable";
 
 export const authRoutes = [
     {
@@ -54,5 +55,9 @@ export const publicRoutes = [
     {
         path: ORDER_ROUTE,
         Component: Order
+    },
+    {
+        path: RESERVE_ROUTE,
+        Component: ReserveTable
     }
 ]
